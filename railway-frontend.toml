@@ -1,10 +1,9 @@
 [build]
 builder = "NIXPACKS"
-buildCommand = "cd student-portal-frontend && npm install && npm run build"
-watchPatterns = ["student-portal-frontend/**/*"]
+buildCommand = "npm install && npm run build"
 
 [deploy]
-startCommand = "cd student-portal-frontend && node server.js"
+startCommand = "node server.js"
 healthcheckPath = "/"
 healthcheckTimeout = 100
 restartPolicyType = "ON_FAILURE"
@@ -18,14 +17,12 @@ cmds = [
 
 [phases.build]
 cmds = [
-    "cd student-portal-frontend",
     "npm install",
     "npm run build"
 ]
 
 [phases.deploy]
 cmds = [
-    "cd student-portal-frontend",
     "node server.js"
 ]
 
