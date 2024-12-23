@@ -1,0 +1,35 @@
+[build]
+builder = "NIXPACKS"
+buildCommand = "cd student-portal-frontend && npm install && npm run build"
+watchPatterns = ["student-portal-frontend/**/*"]
+
+[deploy]
+startCommand = "cd student-portal-frontend && node server.js"
+healthcheckPath = "/"
+healthcheckTimeout = 100
+restartPolicyType = "ON_FAILURE"
+
+[phases.setup]
+nixPkgs = ["nodejs-20_x"]
+cmds = [
+    "npm install -g npm@latest",
+    "node -v"
+]
+
+[phases.build]
+cmds = [
+    "cd student-portal-frontend",
+    "npm install",
+    "npm run build"
+]
+
+[phases.deploy]
+cmds = [
+    "cd student-portal-frontend",
+    "node server.js"
+]
+
+[variables]
+NODE_VERSION = "20.11.0"
+PORT = "3000"
+NPM_VERSION = "10.2.4"
