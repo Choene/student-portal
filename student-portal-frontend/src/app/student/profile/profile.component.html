@@ -1,0 +1,71 @@
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8 col-lg-6">
+      <div class="card shadow">
+        <div class="card-header bg-primary text-white text-center">
+          <h3>Profile</h3>
+        </div>
+        <div class="card-body">
+          <!-- Error Message -->
+          <p *ngIf="error" class="alert alert-danger text-center">{{ error }}</p>
+
+          <!-- Profile Details -->
+          <div *ngIf="profile">
+            <div class="mb-3">
+              <label class="form-label"><strong>Name:</strong></label>
+              <p class="form-control-plaintext">{{ profile.name }}</p>
+            </div>
+            <div class="mb-3">
+              <label class="form-label"><strong>Email:</strong></label>
+              <p class="form-control-plaintext">{{ profile.email }}</p>
+            </div>
+            <div class="mb-3">
+              <label class="form-label"><strong>Two-Factor Authentication:</strong></label>
+              <p class="form-control-plaintext">
+                {{ twoFactorEnabled ? 'Enabled' : 'Disabled' }}
+              </p>
+            </div>
+
+            <!-- Toggle Two-Factor Authentication Button -->
+            <div class="text-center">
+              <button
+                class="btn btn-outline-primary w-100"
+                (click)="toggleTwoFactor()">
+                {{ twoFactorEnabled ? 'Disable Two-Factor Authentication' : 'Enable Two-Factor Authentication' }}
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="card-footer text-center">
+          <button
+            class="btn btn-danger w-100"
+            (click)="logout()">
+            Logout
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- OTP Modal -->
+<div *ngIf="requiresOtp" class="modal-backdrop">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title">Verify OTP</h5>
+    </div>
+    <div class="modal-body">
+      <p>An OTP has been sent to your email. Please enter it below to enable Two-Factor Authentication:</p>
+      <input
+        type="text"
+        [(ngModel)]="otp"
+        class="form-control"
+        placeholder="Enter OTP"
+      />
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-primary" (click)="verifyOtp()">Verify OTP</button>
+      <button class="btn btn-secondary" (click)="cancelOtp()">Cancel</button>
+    </div>
+  </div>
+</div>

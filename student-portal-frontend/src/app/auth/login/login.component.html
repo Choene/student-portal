@@ -1,0 +1,34 @@
+<div class="container mt-5">
+  <h2 class="text-center">Login</h2>
+  <form class="mx-auto mt-4" (ngSubmit)="onLogin()" style="max-width: 400px;">
+    <div class="mb-3">
+      <label for="email" class="form-label">Email</label>
+      <input
+        type="email"
+        id="email"
+        class="form-control"
+        [(ngModel)]="email"
+        name="email"
+        required
+      />
+    </div>
+    <div class="mb-3">
+      <label for="password" class="form-label">Password</label>
+      <input
+        type="password"
+        id="password"
+        class="form-control"
+        [(ngModel)]="password"
+        name="password"
+        required
+      />
+    </div>
+    <button type="submit" class="btn btn-primary w-100">Login</button>
+    <p *ngIf="error" class="text-danger mt-3">{{ error }}</p>
+  </form>
+  <div class="text-center mt-4">
+    <a routerLink="/auth/forgot-password" class="text-decoration-none">Forgot Password?</a>
+    <span class="mx-2">|</span>
+    <a routerLink="/auth/register" class="text-decoration-none">Don't have an account? Register</a>
+  </div>
+</div>

@@ -1,0 +1,18 @@
+<div class="container mt-5">
+  <h2 class="text-center">Verify OTP</h2>
+  <form class="mx-auto mt-4" (ngSubmit)="onVerifyOtp()" style="max-width: 400px;">
+    <div class="mb-3">
+      <label for="otp" class="form-label">Enter OTP</label>
+      <input
+        type="text"
+        id="otp"
+        class="form-control"
+        [(ngModel)]="otp"
+        name="otp"
+        required
+      />
+    </div>
+    <button type="submit" class="btn btn-primary w-100">Verify</button>
+    <p *ngIf="error" class="text-danger mt-3">{{ error }}</p>
+  </form>
+</div>
