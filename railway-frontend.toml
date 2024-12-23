@@ -5,8 +5,9 @@ buildCommand = "npm install && npm run build"
 [deploy]
 startCommand = "node server.js"
 healthcheckPath = "/"
-healthcheckTimeout = 100
+healthcheckTimeout = 180
 restartPolicyType = "ON_FAILURE"
+healthcheckProtocol = "http"
 
 [phases.setup]
 nixPkgs = ["nodejs-20_x"]
