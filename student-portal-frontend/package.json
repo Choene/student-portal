@@ -5,10 +5,8 @@
     "ng": "ng",
     "start": "node server.js",
     "build": "ng build --configuration production",
-    "postbuild": "mv dist/browser dist/student-portal-frontend/browser",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test",
-    "postinstall": "ng build --configuration production"
+    "test": "ng test"
   },
   "private": true,
   "dependencies": {
@@ -39,7 +37,7 @@
     "karma-jasmine-html-reporter": "~2.1.0"
   },
   "engines": {
-    "node": "18.x",
-    "npm": "9.x"
+    "node": "20.11.1",
+    "npm": "10.8.0"
   }
 }
