@@ -15,11 +15,11 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/student-portal-frontend",
+            "outputPath": "dist",
             "index": "src/index.html",
-            "main": "src/main.ts",
+            "browser": "src/main.ts",
             "polyfills": [
               "zone.js"
             ],
@@ -76,10 +76,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "student-portal-frontend:build:production"
+              "buildTarget": "student-portal-frontend:build:production"
             },
             "development": {
-              "browserTarget": "student-portal-frontend:build:development"
+              "buildTarget": "student-portal-frontend:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -87,7 +87,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "student-portal-frontend:build"
+            "buildTarget": "student-portal-frontend:build"
           }
         },
         "test": {
@@ -117,4 +117,4 @@
   "cli": {
     "analytics": "94d42c25-3cf5-4b2d-b4dc-702032ea50a2"
   }
-}
+ }
